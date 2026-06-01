@@ -1,0 +1,17 @@
+name: Carbonyl Test
+
+on: [push]
+
+jobs:
+  carbonyl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Test site with Carbonyl
+        run: |
+          docker run --rm --name carbonyl \
+            -e COLUMNS=120 -e LINES=40 \
+            fathyb/carbonyl \
+            --bitmap --zoom=180 \
+            https://your-website.com
